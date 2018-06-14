@@ -119,7 +119,7 @@ namespace Leader
 
             using (MailMessage mm = new MailMessage(From, To))
             {
-                mm.Subject = "Leader Admin Report - " + dtFromDate.Value + " to "+ dtToDate.Value;
+                mm.Subject = "Leader Admin Report - " + dtFromDate.Value.ToString("dd/MM/yyyy") + " to "+ dtToDate.Value.ToString("dd/MM/yyyy");
                 mm.Body = GetEmailBody();
                 mm.Bcc.Add(new MailAddress("vijay.jagadesh@gmail.com")); 
                 //foreach (string filePath in openFileDialog1.FileNames)

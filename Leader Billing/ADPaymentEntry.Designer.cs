@@ -47,7 +47,6 @@
             this.txtGstAmt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -58,7 +57,6 @@
             this.lblClentAddress = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -69,6 +67,10 @@
             this.txtClientGstNumber = new System.Windows.Forms.TextBox();
             this.lblPaymentID = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbCmAmtPaidNo = new System.Windows.Forms.RadioButton();
+            this.rbCmAmtPaidYes = new System.Windows.Forms.RadioButton();
+            this.label19 = new System.Windows.Forms.Label();
+            this.chkTDS = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtBankName = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -124,9 +126,9 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(480, 398);
+            this.btnSave.Location = new System.Drawing.Point(580, 438);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(103, 25);
+            this.btnSave.Size = new System.Drawing.Size(68, 25);
             this.btnSave.TabIndex = 128;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -135,9 +137,9 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(687, 398);
+            this.btnClose.Location = new System.Drawing.Point(728, 439);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(92, 25);
+            this.btnClose.Size = new System.Drawing.Size(58, 25);
             this.btnClose.TabIndex = 129;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -278,17 +280,13 @@
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(589, 398);
+            this.btnPrint.Location = new System.Drawing.Point(657, 439);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(92, 25);
+            this.btnPrint.Size = new System.Drawing.Size(65, 25);
             this.btnPrint.TabIndex = 149;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // label5
             // 
@@ -406,17 +404,6 @@
             this.label12.Text = "Description :";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // printPreviewDialog1
-            // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Document = this.printDocument1;
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
-            // 
             // groupBox4
             // 
             this.groupBox4.Location = new System.Drawing.Point(26, 466);
@@ -512,6 +499,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbCmAmtPaidNo);
+            this.groupBox1.Controls.Add(this.rbCmAmtPaidYes);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.chkTDS);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtBankName);
@@ -525,10 +516,54 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Location = new System.Drawing.Point(398, 140);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(371, 246);
+            this.groupBox1.Size = new System.Drawing.Size(371, 278);
             this.groupBox1.TabIndex = 154;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payment Information";
+            // 
+            // rbCmAmtPaidNo
+            // 
+            this.rbCmAmtPaidNo.AutoSize = true;
+            this.rbCmAmtPaidNo.Checked = true;
+            this.rbCmAmtPaidNo.Location = new System.Drawing.Point(194, 249);
+            this.rbCmAmtPaidNo.Name = "rbCmAmtPaidNo";
+            this.rbCmAmtPaidNo.Size = new System.Drawing.Size(39, 17);
+            this.rbCmAmtPaidNo.TabIndex = 155;
+            this.rbCmAmtPaidNo.TabStop = true;
+            this.rbCmAmtPaidNo.Text = "No";
+            this.rbCmAmtPaidNo.UseVisualStyleBackColor = true;
+            // 
+            // rbCmAmtPaidYes
+            // 
+            this.rbCmAmtPaidYes.AutoSize = true;
+            this.rbCmAmtPaidYes.Location = new System.Drawing.Point(147, 249);
+            this.rbCmAmtPaidYes.Name = "rbCmAmtPaidYes";
+            this.rbCmAmtPaidYes.Size = new System.Drawing.Size(43, 17);
+            this.rbCmAmtPaidYes.TabIndex = 154;
+            this.rbCmAmtPaidYes.Text = "Yes";
+            this.rbCmAmtPaidYes.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(5, 252);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(136, 14);
+            this.label19.TabIndex = 153;
+            this.label19.Text = "Commission Amt Paid :";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label19.UseMnemonic = false;
+            // 
+            // chkTDS
+            // 
+            this.chkTDS.AutoSize = true;
+            this.chkTDS.Location = new System.Drawing.Point(285, 163);
+            this.chkTDS.Name = "chkTDS";
+            this.chkTDS.Size = new System.Drawing.Size(65, 17);
+            this.chkTDS.TabIndex = 152;
+            this.chkTDS.Text = "2% TDS";
+            this.chkTDS.UseVisualStyleBackColor = true;
             // 
             // label18
             // 
@@ -607,9 +642,9 @@
             // btnEmail
             // 
             this.btnEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmail.Location = new System.Drawing.Point(328, 433);
+            this.btnEmail.Location = new System.Drawing.Point(333, 439);
             this.btnEmail.Name = "btnEmail";
-            this.btnEmail.Size = new System.Drawing.Size(182, 28);
+            this.btnEmail.Size = new System.Drawing.Size(182, 25);
             this.btnEmail.TabIndex = 178;
             this.btnEmail.Text = "Send Cash Reciept in Email";
             this.btnEmail.UseVisualStyleBackColor = true;
@@ -701,11 +736,9 @@
         private System.Windows.Forms.TextBox txtGstAmt;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnPrint;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblAddress;
@@ -733,5 +766,9 @@
         private System.Windows.Forms.Button btnEmail;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.CheckBox chkTDS;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.RadioButton rbCmAmtPaidNo;
+        private System.Windows.Forms.RadioButton rbCmAmtPaidYes;
     }
 }

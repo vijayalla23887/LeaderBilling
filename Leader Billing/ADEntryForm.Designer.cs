@@ -61,8 +61,6 @@
             this.txtCommisionPercentage = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.btnPayment = new System.Windows.Forms.Button();
             this.lblLeaderPh = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -86,7 +84,7 @@
             this.txtPhoneNumber.Location = new System.Drawing.Point(105, 122);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(245, 21);
-            this.txtPhoneNumber.TabIndex = 3;
+            this.txtPhoneNumber.TabIndex = 4;
             this.txtPhoneNumber.Tag = "";
             // 
             // label5
@@ -189,7 +187,7 @@
             this.dtADDate.Location = new System.Drawing.Point(135, 326);
             this.dtADDate.Name = "dtADDate";
             this.dtADDate.Size = new System.Drawing.Size(245, 21);
-            this.dtADDate.TabIndex = 4;
+            this.dtADDate.TabIndex = 5;
             this.dtADDate.Value = new System.DateTime(2017, 5, 12, 17, 27, 11, 0);
             // 
             // label7
@@ -240,7 +238,7 @@
             this.txtDescription.Location = new System.Drawing.Point(413, 179);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(372, 88);
-            this.txtDescription.TabIndex = 5;
+            this.txtDescription.TabIndex = 6;
             this.txtDescription.Text = "";
             // 
             // label4
@@ -330,7 +328,7 @@
             this.txtClientGstNo.Location = new System.Drawing.Point(104, 94);
             this.txtClientGstNo.Name = "txtClientGstNo";
             this.txtClientGstNo.Size = new System.Drawing.Size(245, 21);
-            this.txtClientGstNo.TabIndex = 121;
+            this.txtClientGstNo.TabIndex = 3;
             // 
             // label17
             // 
@@ -364,7 +362,7 @@
             this.cbAgents.Location = new System.Drawing.Point(105, 15);
             this.cbAgents.Name = "cbAgents";
             this.cbAgents.Size = new System.Drawing.Size(232, 21);
-            this.cbAgents.TabIndex = 174;
+            this.cbAgents.TabIndex = 7;
             this.cbAgents.SelectedIndexChanged += new System.EventHandler(this.cbAgents_SelectedIndexChanged);
             // 
             // label12
@@ -410,21 +408,6 @@
             this.btnPrint.Text = "Print RO";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // printPreviewDialog1
-            // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Document = this.printDocument1;
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // btnPayment
             // 
@@ -509,7 +492,7 @@
             this.btnInvoice.Location = new System.Drawing.Point(670, 492);
             this.btnInvoice.Name = "btnInvoice";
             this.btnInvoice.Size = new System.Drawing.Size(119, 28);
-            this.btnInvoice.TabIndex = 173;
+            this.btnInvoice.TabIndex = 12;
             this.btnInvoice.Text = "Print Invoice - RO";
             this.btnInvoice.UseVisualStyleBackColor = true;
             this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
@@ -520,7 +503,7 @@
             this.txtEmail.Location = new System.Drawing.Point(93, 496);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(246, 21);
-            this.txtEmail.TabIndex = 174;
+            this.txtEmail.TabIndex = 13;
             this.txtEmail.Tag = "";
             this.txtEmail.Text = "vijay.jagadesh@gmail.com";
             // 
@@ -540,7 +523,7 @@
             this.btnEmail.Location = new System.Drawing.Point(93, 533);
             this.btnEmail.Name = "btnEmail";
             this.btnEmail.Size = new System.Drawing.Size(146, 28);
-            this.btnEmail.TabIndex = 175;
+            this.btnEmail.TabIndex = 14;
             this.btnEmail.Text = "Send Invoice in Email";
             this.btnEmail.UseVisualStyleBackColor = true;
             this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
@@ -617,8 +600,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtCommisionPercentage;

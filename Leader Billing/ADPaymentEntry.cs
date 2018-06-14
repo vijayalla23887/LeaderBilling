@@ -168,7 +168,7 @@ namespace Leader
                         if (btnSave.Text == "Save")
                         {
                             string ID = SaveData(Convert.ToInt32(lblADID.Text), dtPaymentDate.Value, Convert.ToInt32(txtAdAmt.Text), Convert.ToInt32(txtGstAmt.Text),
-                            Convert.ToInt32(txtPayAmt.Text), txtClientGstNumber.Text, txtCheque.Text, txtBankName.Text);
+                            Convert.ToInt32(txtPayAmt.Text), txtClientGstNumber.Text, txtCheque.Text, txtBankName.Text,rbCmAmtPaidYes.Checked,chkTDS.Checked);
                             if (ID != "Fail")
                             {
                                 lblPaymentID.Text = ID;
@@ -186,7 +186,7 @@ namespace Leader
                         else
                         {
                             string ID = UpdateData(Convert.ToInt32(lblADID.Text), Convert.ToInt32(lblPaymentID.Text), dtPaymentDate.Value, Convert.ToInt32(txtAdAmt.Text), Convert.ToInt32(txtGstAmt.Text),
-                            Convert.ToInt32(txtPayAmt.Text), txtClientGstNumber.Text, txtCheque.Text, txtBankName.Text);
+                            Convert.ToInt32(txtPayAmt.Text), txtClientGstNumber.Text, txtCheque.Text, txtBankName.Text, rbCmAmtPaidYes.Checked, chkTDS.Checked);
                             if (ID != "Fail")
                             {
                                 getPaymentDetails(Convert.ToInt32(lblADID.Text));
@@ -211,7 +211,8 @@ namespace Leader
             }
         }
 
-        string SaveData(int AdID,DateTime PaymentDate, int ADAmount, int GstAmount, int TotalAmount, string ClientGstNumber, string Cheque, string BankName)
+        string SaveData(int AdID,DateTime PaymentDate, int ADAmount, int GstAmount, int TotalAmount, string ClientGstNumber, string Cheque, 
+            string BankName, bool CMPaid, bool TDSDeducted)
         {
             try
             {
@@ -229,6 +230,8 @@ namespace Leader
                 dataCommand.Parameters.AddWithValue("@ClientGstNumber", ClientGstNumber);
                 dataCommand.Parameters.AddWithValue("@Cheque", Cheque);
                 dataCommand.Parameters.AddWithValue("@BankName", BankName);
+                dataCommand.Parameters.AddWithValue("@CommissionAmtPaid", CMPaid);
+                dataCommand.Parameters.AddWithValue("@TDSDeducted", TDSDeducted);
 
                 dataCommand.Parameters.Add(ID);
 
@@ -244,7 +247,8 @@ namespace Leader
             }
         }
 
-        string UpdateData(int AdID, int PaymentID, DateTime PaymentDate, int ADAmount, int GstAmount, int TotalAmount, string ClientGstNumber, string Cheque, string BankName)
+        string UpdateData(int AdID, int PaymentID, DateTime PaymentDate, int ADAmount, int GstAmount, int TotalAmount, string ClientGstNumber, 
+            string Cheque, string BankName, bool CMPaid, bool TDSDeducted)
         {
             try
             {
@@ -262,7 +266,8 @@ namespace Leader
                 dataCommand.Parameters.AddWithValue("@ClientGstNumber", ClientGstNumber);
                 dataCommand.Parameters.AddWithValue("@Cheque", Cheque);
                 dataCommand.Parameters.AddWithValue("@BankName", BankName);
-
+                dataCommand.Parameters.AddWithValue("@CommissionAmtPaid", CMPaid);
+                dataCommand.Parameters.AddWithValue("@TDSDeducted", TDSDeducted);
                 dataConnection.Open();
                 dataCommand.ExecuteScalar();
                 dataConnection.Close();
@@ -333,28 +338,7 @@ namespace Leader
                 MessageBox.Show("Enter Paid Amount.");
             }
         }
-        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
-        public static extern long BitBlt(IntPtr hdcDest, int nXDest, int nYDest, int nWidth, int nHeight, IntPtr hdcSrc, int nXSrc, int nYSrc, int dwRop);
-        private Bitmap memoryImage;
-
-        private void PrintScreen()
-        {
-            Graphics mygraphics = this.CreateGraphics();
-            Size s = this.Size;
-            memoryImage = new Bitmap(s.Width, s.Height, mygraphics);
-            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
-            IntPtr dc1 = mygraphics.GetHdc();
-            IntPtr dc2 = memoryGraphics.GetHdc();
-            BitBlt(dc2, 0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height, dc1, 0, 0, 13369376);
-            mygraphics.ReleaseHdc(dc1);
-            memoryGraphics.ReleaseHdc(dc2);
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            e.Graphics.DrawImage(memoryImage, 0, 0);
-        }
-
+        
         private void gvAdPaymentgrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != gvAdPaymentgrid.RowCount)
@@ -374,6 +358,14 @@ namespace Leader
                     txtClientGstNumber.Text = gvAdPaymentgrid.Rows[row].Cells["ClientGstNumber"].Value.ToString();
                     txtCheque.Text = gvAdPaymentgrid.Rows[row].Cells["Cheque"].Value.ToString();
                     txtBankName.Text = gvAdPaymentgrid.Rows[row].Cells["BankName"].Value.ToString();
+                    rbCmAmtPaidYes.Checked = Convert.ToBoolean(gvAdPaymentgrid.Rows[row].Cells["CommissionAmtPaid"].Value);
+                    chkTDS.Checked = Convert.ToBoolean(gvAdPaymentgrid.Rows[row].Cells["TDSDeducted"].Value);
+                    if (rbCmAmtPaidYes.Checked == true)
+                    {
+                        rbCmAmtPaidYes.Enabled = false;
+                        rbCmAmtPaidNo.Enabled = false;
+                    }
+
                     btnSave.Text = "Update";
                     btnSave.Enabled = true;
                     dtPaymentDate.Enabled = true;
