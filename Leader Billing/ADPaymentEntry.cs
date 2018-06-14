@@ -31,6 +31,16 @@ namespace Leader
             InitializeComponent();
             dtPaymentDate.Value = DateTime.Now;
             getBill(ID);
+            DataGridViewLinkColumn link = new DataGridViewLinkColumn();
+            link.UseColumnTextForLinkValue = true;
+            link.HeaderText = "Click to View Details";
+            link.DataPropertyName = "lnkColumn";
+            link.ActiveLinkColor = Color.White;
+            link.LinkBehavior = LinkBehavior.SystemDefault;
+            link.LinkColor = Color.Blue;
+            link.Text = "View Details";
+            link.VisitedLinkColor = Color.YellowGreen;
+            gvAdPaymentgrid.Columns.Add(link);
             getPaymentDetails(ID);
             lblGstNumber.Text = "GST Number :   " + GSTNum;
             lblLeaderPh.Text = PhFromConfig;
@@ -108,16 +118,6 @@ namespace Leader
         }
         public void getPaymentDetails(int ID)
         {
-            DataGridViewLinkColumn link = new DataGridViewLinkColumn();
-            link.UseColumnTextForLinkValue = true;
-            link.HeaderText = "Click to View Details";
-            link.DataPropertyName = "lnkColumn";
-            link.ActiveLinkColor = Color.White;
-            link.LinkBehavior = LinkBehavior.SystemDefault;
-            link.LinkColor = Color.Blue;
-            link.Text = "View Details";
-            link.VisitedLinkColor = Color.YellowGreen;
-            gvAdPaymentgrid.Columns.Add(link);
             string strCmd = "[spGetADEntryPaymentDetails]";
             SqlCommand cmd = new SqlCommand(strCmd, dataConnection);
             SqlDataAdapter da = new SqlDataAdapter(strCmd, dataConnection);
@@ -313,14 +313,10 @@ namespace Leader
                 {
                     try
                     {
-                        btnSave.Visible = false; btnPrint.Visible = false; btnClose.Visible = false; groupBox4.Visible = false;
-                        gvAdPaymentgrid.Visible = false; lblBalanceAmt.Visible = false;
+                        btnSave.Visible = false; btnPrint.Visible = false; btnClose.Visible = false;
                         PaymentReceiptReport obj = new PaymentReceiptReport(Convert.ToInt32(lblADID.Text), Convert.ToInt32(lblPaymentID.Text));
                         obj.Show();
-
-
-                        btnPrint.Visible = true; btnClose.Visible = true; groupBox4.Visible = true; gvAdPaymentgrid.Visible = true;
-                        lblBalanceAmt.Visible = true;
+                        btnSave.Visible = true; btnPrint.Visible = true; btnClose.Visible = true; 
                     }
                     catch
                     {
