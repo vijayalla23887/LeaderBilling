@@ -22,6 +22,9 @@ namespace Leader
         int balanceAmt = 0;
         string PhFromConfig = ConfigurationManager.AppSettings["LeaderPhonenumberAndEmail"];
         string GSTNum = ConfigurationManager.AppSettings["GSTNum"];
+        string ReportsFolder = ConfigurationManager.AppSettings["ReportsFolder"];
+        string InvoiceFolder = ConfigurationManager.AppSettings["InvoiceFolder"];
+        string CashFolder = ConfigurationManager.AppSettings["CashFolder"];
         public ADPaymentEntry()
         {
             InitializeComponent();
@@ -379,6 +382,7 @@ namespace Leader
                 }
                 else
                 {
+                    btnEmail.Enabled = false;
                     string From = "leadernewspaperbilling@gmail.com";
                     //string To = "leaderramanamurthy@gmail.com";
                     string To = txtEmail.Text;
@@ -401,6 +405,7 @@ namespace Leader
                         smtp.Port = 587;
                         smtp.Send(mm);
                         MessageBox.Show("Email has been sent to " + To, "Message");
+                        btnEmail.Enabled = true;
                     }
                 }
             }
@@ -440,14 +445,14 @@ namespace Leader
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(@"C:\Vijju\Leader\Reports\CashReport.rpt");
+                rpt.Load(ReportsFolder+"\\CashReport.rpt");
 
                 rpt.SetDataSource(getBillDate(Convert.ToInt32(lblADID.Text),Convert.ToInt32(lblPaymentID.Text)));
 
                 ExportOptions rptExportOption;
                 DiskFileDestinationOptions rptFileDestOption = new DiskFileDestinationOptions();
                 PdfRtfWordFormatOptions rptFormatOption = new PdfRtfWordFormatOptions();
-                string reportFileName = @"C:\Vijju\Leader\PDF Reports\Cash Receipt\Cash Receipt No - " + lblPaymentID.Text + ".pdf";
+                string reportFileName = CashFolder+"\\Cash Receipt No - " + lblPaymentID.Text + ".pdf";
                 rptFileDestOption.DiskFileName = reportFileName;
                 rptExportOption = rpt.ExportOptions;
                 {

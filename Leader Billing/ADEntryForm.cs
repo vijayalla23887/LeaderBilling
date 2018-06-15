@@ -21,6 +21,9 @@ namespace Leader
         SqlConnection dataConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["LeaderConn"].ConnectionString);
         string PhFromConfig = ConfigurationManager.AppSettings["LeaderPhonenumberAndEmail"];
         string GSTNum = ConfigurationManager.AppSettings["GSTNum"];
+        string ReportsFolder = ConfigurationManager.AppSettings["ReportsFolder"];
+        string InvoiceFolder = ConfigurationManager.AppSettings["InvoiceFolder"];
+        string CashFolder = ConfigurationManager.AppSettings["CashFolder"];
         public ADEntryForm()
         {
             InitializeComponent();
@@ -380,14 +383,14 @@ namespace Leader
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(@"C:\Vijju\Leader\TaxInvoice.rpt");
+                rpt.Load(ReportsFolder + "\\TaxInvoice.rpt");
 
                 rpt.SetDataSource(getBillDate(Convert.ToInt32(lblADID.Text)));
 
                 ExportOptions rptExportOption;
                 DiskFileDestinationOptions rptFileDestOption = new DiskFileDestinationOptions();
                 PdfRtfWordFormatOptions rptFormatOption = new PdfRtfWordFormatOptions();
-                string reportFileName = @"C:\Vijju\Leader\PDF Reports\Invoice\Invoice No - " + lblADID.Text + ".pdf";
+                string reportFileName = InvoiceFolder + "\\Invoice No - " + lblADID.Text + ".pdf";
                 rptFileDestOption.DiskFileName = reportFileName;
                 rptExportOption = rpt.ExportOptions;
                 {
@@ -418,6 +421,7 @@ namespace Leader
                 }
                 else
                 {
+                    btnEmail.Enabled = false;
                     string From = "leadernewspaperbilling@gmail.com";
                     //string To = "leaderramanamurthy@gmail.com";
                     string To = txtEmail.Text;
@@ -440,6 +444,7 @@ namespace Leader
                         smtp.Port = 587;
                         smtp.Send(mm);
                         MessageBox.Show("Email has been sent to " + To, "Message");
+                        btnEmail.Enabled = true;
                     }
                 }
             }
