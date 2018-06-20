@@ -706,6 +706,7 @@
             this.Controls.Add(this.groupBox4);
             this.Name = "ADPaymentEntry";
             this.Text = "ADPaymentEntry";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.gvAdPaymentgrid)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

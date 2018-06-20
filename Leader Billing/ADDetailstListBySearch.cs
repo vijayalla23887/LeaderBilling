@@ -42,10 +42,10 @@ namespace Leader
             Paylink.VisitedLinkColor = Color.YellowGreen;
             gvAdListgrid.Columns.Add(Paylink);
             this.gvAdListgrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            gvAdListgrid.DataSource = LoadAdListDetails(dtFromDate.Value, dtToDate.Value,txtAgentName.Text, txtName.Text, txtPhoneNumber.Text);
+            gvAdListgrid.DataSource = LoadAdListDetails(dtFromDate.Value, dtToDate.Value, txtAgentName.Text, txtName.Text, txtPhoneNumber.Text);
         }
 
-        public DataTable LoadAdListDetails(DateTime StartDate, DateTime EndDate,string AgentName,string Name,string PhoneNumber)
+        public DataTable LoadAdListDetails(DateTime StartDate, DateTime EndDate, string AgentName, string Name, string PhoneNumber)
         {
             string strCmd = "spADListDetailsBySearch";
             SqlCommand cmd = new SqlCommand(strCmd, dataConnection);
@@ -66,7 +66,7 @@ namespace Leader
                 lblPaymentAmt.Text = "Total AD's Cost : " + dt.Compute("Sum(TotalADCost)", "");
                 DataRow NewRow = dt.NewRow();
                 NewRow["TotalADCost"] = dt.Compute("Sum(TotalADCost)", "");
-                NewRow["ADCost"] = dt.Compute("Sum(ADCost)", "" );
+                NewRow["ADCost"] = dt.Compute("Sum(ADCost)", "");
                 NewRow["GstCost"] = dt.Compute("Sum(GstCost)", "");
                 NewRow["TotalReceivedAmt"] = dt.Compute("Sum(TotalReceivedAmt)", "");
                 NewRow["ReceivedGstAmount"] = dt.Compute("Sum(ReceivedGstAmount)", "");
@@ -79,7 +79,7 @@ namespace Leader
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            gvAdListgrid.DataSource = LoadAdListDetails(dtFromDate.Value, dtToDate.Value,txtAgentName.Text,txtName.Text,txtPhoneNumber.Text);
+            gvAdListgrid.DataSource = LoadAdListDetails(dtFromDate.Value, dtToDate.Value, txtAgentName.Text, txtName.Text, txtPhoneNumber.Text);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -97,34 +97,52 @@ namespace Leader
 
         private void gvAdListgrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != gvAdListgrid.RowCount-1)
+            //Check whether user click on the first column 
+            if (e.ColumnIndex == 0 && e.RowIndex != -1)
             {
-                //Check whether user click on the first column 
-                if (e.ColumnIndex == 0 && e.RowIndex != -1)
-                {
-                    int row;
-                    //Get the row index
-                    row = e.RowIndex;
-                    //Create instance of the form2 class
-                    ADEntryForm obj = new ADEntryForm(Convert.ToInt32(gvAdListgrid.Rows[row].Cells["ADID"].Value));
-                    //Bind the datagridview values in the second popup form
-                    obj.Controls["lblADID"].Text = gvAdListgrid.Rows[row].Cells["ADID"].Value.ToString();
-                    obj.Controls["btnSave"].Text = "Update";
-                    obj.ShowDialog();
-                }
-
-                if (e.ColumnIndex == 1 && e.RowIndex != -1)
-                {
-                    int row;
-                    //Get the row index
-                    row = e.RowIndex;
-                    //Create instance of the form2 class
-                    ADPaymentEntry obj = new ADPaymentEntry(Convert.ToInt32(gvAdListgrid.Rows[row].Cells["ADID"].Value));
-                    //Bind the datagridview values in the second popup form
-                    obj.Controls["lblADID"].Text = gvAdListgrid.Rows[row].Cells["ADID"].Value.ToString();
-                    obj.ShowDialog();
-                }
+                int row;
+                //Get the row index
+                row = e.RowIndex;
+                if (gvAdListgrid.Rows[row].Cells["ADID"].Value.ToString() == "")
+                    return;
+                //Create instance of the form2 class
+                ADEntryForm obj = new ADEntryForm(Convert.ToInt32(gvAdListgrid.Rows[row].Cells["ADID"].Value));
+                //Bind the datagridview values in the second popup form
+                obj.Controls["lblADID"].Text = gvAdListgrid.Rows[row].Cells["ADID"].Value.ToString();
+                obj.Controls["btnSave"].Text = "Update";
+                obj.ShowDialog();
             }
+
+            if (e.ColumnIndex == 1 && e.RowIndex != -1)
+            {
+                int row;
+                //Get the row index
+                row = e.RowIndex;
+                if (gvAdListgrid.Rows[row].Cells["ADID"].Value.ToString() == "")
+                    return;
+                //Create instance of the form2 class
+                ADPaymentEntry obj = new ADPaymentEntry(Convert.ToInt32(gvAdListgrid.Rows[row].Cells["ADID"].Value));
+                //Bind the datagridview values in the second popup form
+                obj.Controls["lblADID"].Text = gvAdListgrid.Rows[row].Cells["ADID"].Value.ToString();
+                obj.ShowDialog();
+            }
+        }
+
+        private void btnSearchByADID_Click(object sender, EventArgs e)
+        {
+            gvAdListgrid.DataSource = LoadAdListDetailsByADID(Convert.ToInt32(txtADID.Text));
+        }
+        public DataTable LoadAdListDetailsByADID(int ADID)
+        {
+            string strCmd = "spADListDetailsByID";
+            SqlDataAdapter da = new SqlDataAdapter(strCmd, dataConnection);
+            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+            da.SelectCommand.Parameters.AddWithValue("@ADID", ADID);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);            
+            return dt;
         }
     }
 }

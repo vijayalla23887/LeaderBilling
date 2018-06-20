@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ADDetailstListBySearch));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExport = new System.Windows.Forms.Button();
             this.lblPaymentAmt = new System.Windows.Forms.Label();
             this.btnShow = new System.Windows.Forms.Button();
@@ -46,6 +46,9 @@
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ExportFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.txtADID = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnSearchByADID = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAdListgrid)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +69,7 @@
             this.lblPaymentAmt.AutoSize = true;
             this.lblPaymentAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaymentAmt.ForeColor = System.Drawing.Color.Red;
-            this.lblPaymentAmt.Location = new System.Drawing.Point(759, 12);
+            this.lblPaymentAmt.Location = new System.Drawing.Point(759, 102);
             this.lblPaymentAmt.Name = "lblPaymentAmt";
             this.lblPaymentAmt.Size = new System.Drawing.Size(0, 24);
             this.lblPaymentAmt.TabIndex = 151;
@@ -128,7 +131,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(493, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(505, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(232, 56);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -139,14 +142,14 @@
             // 
             this.gvAdListgrid.AllowUserToAddRows = false;
             this.gvAdListgrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvAdListgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvAdListgrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gvAdListgrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvAdListgrid.Location = new System.Drawing.Point(36, 140);
             this.gvAdListgrid.Name = "gvAdListgrid";
@@ -185,7 +188,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(63, 11);
+            this.label3.Location = new System.Drawing.Point(63, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 15);
             this.label3.TabIndex = 156;
@@ -204,7 +207,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 41);
+            this.label5.Location = new System.Drawing.Point(12, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 15);
             this.label5.TabIndex = 158;
@@ -214,11 +217,43 @@
             // 
             this.ExportFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.ExportFileDialog_FileOk);
             // 
+            // txtADID
+            // 
+            this.txtADID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtADID.Location = new System.Drawing.Point(839, 16);
+            this.txtADID.Name = "txtADID";
+            this.txtADID.Size = new System.Drawing.Size(132, 21);
+            this.txtADID.TabIndex = 161;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(791, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 15);
+            this.label6.TabIndex = 162;
+            this.label6.Text = "AD ID :";
+            // 
+            // btnSearchByADID
+            // 
+            this.btnSearchByADID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchByADID.Location = new System.Drawing.Point(987, 13);
+            this.btnSearchByADID.Name = "btnSearchByADID";
+            this.btnSearchByADID.Size = new System.Drawing.Size(117, 25);
+            this.btnSearchByADID.TabIndex = 163;
+            this.btnSearchByADID.Text = "Search By AD ID";
+            this.btnSearchByADID.UseVisualStyleBackColor = true;
+            this.btnSearchByADID.Click += new System.EventHandler(this.btnSearchByADID_Click);
+            // 
             // ADDetailstListBySearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 655);
+            this.Controls.Add(this.btnSearchByADID);
+            this.Controls.Add(this.txtADID);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPhoneNumber);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtName);
@@ -236,6 +271,7 @@
             this.Controls.Add(this.gvAdListgrid);
             this.Name = "ADDetailstListBySearch";
             this.Text = "ComissionAgentList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAdListgrid)).EndInit();
             this.ResumeLayout(false);
@@ -261,5 +297,8 @@
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.SaveFileDialog ExportFileDialog;
+        private System.Windows.Forms.TextBox txtADID;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnSearchByADID;
     }
 }

@@ -19,6 +19,9 @@ namespace Leader
     public partial class AdminReport : Form
     {
         SqlConnection dataConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["LeaderConn"].ConnectionString);
+        string ToAddress = ConfigurationManager.AppSettings["CC"];
+        string CCAddress = ConfigurationManager.AppSettings["TO"];
+        string Test = ConfigurationManager.AppSettings["Test"];
         public AdminReport()
         {
             InitializeComponent();
@@ -114,9 +117,14 @@ namespace Leader
         private void btnEmail_Click(object sender, EventArgs e)
         {
             string From = "leadernewspaperbilling@gmail.com";
-            //string To = "leaderramanamurthy@gmail.com";
-            string To = "vijay.jagadesh@gmail.com";
-
+            
+            string To = ToAddress;
+            string CC = CCAddress;
+            if (Test == "Test")
+            {
+                To = "vijay.jagadesh@gmail.com";
+                CC = "vijay.jagadesh@gmail.com";
+            }
             using (MailMessage mm = new MailMessage(From, To))
             {
                 mm.Subject = "Leader Admin Report - " + dtFromDate.Value.ToString("dd/MM/yyyy") + " to "+ dtToDate.Value.ToString("dd/MM/yyyy");

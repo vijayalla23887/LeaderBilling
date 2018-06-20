@@ -199,6 +199,7 @@
             this.Controls.Add(this.gvAdPaymentsListgrid);
             this.Name = "ADPaymentsList";
             this.Text = "ADPaymentsList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAdPaymentsListgrid)).EndInit();
             this.ResumeLayout(false);

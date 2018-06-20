@@ -560,6 +560,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "ADEntryForm";
             this.Text = "ADEntryForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
