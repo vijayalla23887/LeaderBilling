@@ -81,7 +81,7 @@ namespace Leader
                     }
                     else
                     {
-                        string ID = UpdateData(txtName.Text, txtPhNo.Text,Convert.ToInt32(lblID.Text));
+                        string ID = UpdateData(txtName.Text, txtPhNo.Text, Convert.ToInt32(lblID.Text));
                         if (ID != "Fail")
                         {
                             gvAdListgrid.DataSource = LoadAgents();
@@ -128,7 +128,7 @@ namespace Leader
                 return "Fail";
             }
         }
-        string UpdateData(string Name, string PhoneNo,int AgentID)
+        string UpdateData(string Name, string PhoneNo, int AgentID)
         {
             try
             {
@@ -157,17 +157,16 @@ namespace Leader
 
         private void gvAdListgrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != gvAdListgrid.RowCount - 1)
+            //Check whether user click on the first column 
+            if (e.ColumnIndex == 0 && e.RowIndex != -1)
             {
-                //Check whether user click on the first column 
-                if (e.ColumnIndex == 0 && e.RowIndex != -1 && e.RowIndex != 1)
-                {
-                    btnSave.Text = "Update";
-                    int row = e.RowIndex;
-                    txtName.Text = gvAdListgrid.Rows[row].Cells["AgentName"].Value.ToString();                    
-                    txtPhNo.Text = gvAdListgrid.Rows[row].Cells["PhoneNumber"].Value.ToString();
-                    lblID.Text = gvAdListgrid.Rows[row].Cells["AgentID"].Value.ToString();
-                }
+                btnSave.Text = "Update";
+                int row = e.RowIndex;
+                if (gvAdListgrid.Rows[row].Cells["AgentID"].Value.ToString() == "")
+                    return;
+                txtName.Text = gvAdListgrid.Rows[row].Cells["AgentName"].Value.ToString();
+                txtPhNo.Text = gvAdListgrid.Rows[row].Cells["PhoneNumber"].Value.ToString();
+                lblID.Text = gvAdListgrid.Rows[row].Cells["AgentID"].Value.ToString();
             }
         }
 

@@ -16,7 +16,7 @@ namespace Leader
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ADMainPage());
+            Application.Run(new Login());
         }
     }
 }
