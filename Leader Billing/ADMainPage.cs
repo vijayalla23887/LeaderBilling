@@ -58,5 +58,11 @@ namespace Leader
             CommisionAgentEntry obj = new CommisionAgentEntry();
             obj.Show(this);
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ReportByChart obj = new ReportByChart();
+            obj.Show(this);
+        }
     }
 }

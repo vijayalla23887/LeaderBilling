@@ -383,7 +383,10 @@ namespace Leader
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ReportsFolder + "\\TaxInvoice.rpt");
+                if(chkVskp.Checked)
+                    rpt.Load(ReportsFolder + "\\TaxInvoice.rpt");
+                else
+                    rpt.Load(ReportsFolder + "\\TaxInvoiceAkp.rpt");
 
                 rpt.SetDataSource(getBillDate(Convert.ToInt32(lblADID.Text)));
 

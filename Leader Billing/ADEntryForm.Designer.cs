@@ -72,6 +72,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnEmail = new System.Windows.Forms.Button();
+            this.chkVskp = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -142,7 +143,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(392, 492);
+            this.btnSave.Location = new System.Drawing.Point(403, 492);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(66, 28);
             this.btnSave.TabIndex = 10;
@@ -237,7 +238,7 @@
             this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.Location = new System.Drawing.Point(413, 179);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(372, 88);
+            this.txtDescription.Size = new System.Drawing.Size(376, 88);
             this.txtDescription.TabIndex = 6;
             this.txtDescription.Text = "";
             // 
@@ -401,7 +402,7 @@
             // 
             this.btnPrint.Enabled = false;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(597, 492);
+            this.btnPrint.Location = new System.Drawing.Point(598, 492);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(66, 28);
             this.btnPrint.TabIndex = 11;
@@ -413,7 +414,7 @@
             // 
             this.btnPayment.Enabled = false;
             this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayment.Location = new System.Drawing.Point(471, 492);
+            this.btnPayment.Location = new System.Drawing.Point(475, 492);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(116, 28);
             this.btnPayment.TabIndex = 12;
@@ -520,7 +521,7 @@
             // btnEmail
             // 
             this.btnEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmail.Location = new System.Drawing.Point(93, 533);
+            this.btnEmail.Location = new System.Drawing.Point(193, 533);
             this.btnEmail.Name = "btnEmail";
             this.btnEmail.Size = new System.Drawing.Size(146, 28);
             this.btnEmail.TabIndex = 14;
@@ -528,12 +529,23 @@
             this.btnEmail.UseVisualStyleBackColor = true;
             this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
             // 
+            // chkVskp
+            // 
+            this.chkVskp.AutoSize = true;
+            this.chkVskp.Location = new System.Drawing.Point(37, 541);
+            this.chkVskp.Name = "chkVskp";
+            this.chkVskp.Size = new System.Drawing.Size(89, 17);
+            this.chkVskp.TabIndex = 173;
+            this.chkVskp.Text = "VSKP Report";
+            this.chkVskp.UseVisualStyleBackColor = true;
+            // 
             // ADEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(814, 605);
+            this.Controls.Add(this.chkVskp);
             this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtEmail);
@@ -617,5 +629,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnEmail;
+        private System.Windows.Forms.CheckBox chkVskp;
     }
 }

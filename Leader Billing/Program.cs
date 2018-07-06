@@ -16,7 +16,7 @@ namespace Leader
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReportByChart());
+            Application.Run(new ADMainPage());
         }
     }
 }
